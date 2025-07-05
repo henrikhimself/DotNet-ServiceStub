@@ -1,0 +1,7 @@
+<Project>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ServiceStub\ServiceStub.csproj" />
+  </ItemGroup>
+
+</Project>

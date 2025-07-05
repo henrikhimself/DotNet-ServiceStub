@@ -1,0 +1,17 @@
+<Project>
+
+  <PropertyGroup>
+    <RootNamespace>Hj.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <LangVersion>Latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Authors>Henrik Jensen</Authors>
+    <Description>Intercepts HTTP requests and serves local service stubs for testing without external dependencies.</Description>
+    <PackageTags>testing;mock</PackageTags>
+    <PackageProjectUrl>https://github.com/henrikhimself/DotNet-ServiceStub</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/henrikhimself/DotNet-ServiceStub.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0-beta1</Version>
+  </PropertyGroup>
+
+</Project>
