@@ -46,8 +46,10 @@ public class StubAppTests
     Assert.Equal("x/y/a/b/get", result);
   }
 
-  [Fact]
-  public void GetFilePath_GivenHttpContext_Returns()
+  [Theory]
+  [InlineData("/home/bourne/json/")]
+  [InlineData("c:\\home\\bourne\\json\\")]
+  public void GetFilePath_GivenHttpContext_Returns(string jsonPath)
   {
     // arrange
     DefaultHttpContext? httpContext = null;
@@ -56,7 +58,7 @@ public class StubAppTests
     {
       SetHappyPath(arrange);
       httpContext = arrange.Instance<DefaultHttpContext>();
-      arrange.Instance<StubOptions>().JsonPath = "/home/bourne/json/";
+      arrange.Instance<StubOptions>().JsonPath = jsonPath;
     });
 
     sut.CurrentCollection = "x";
@@ -65,7 +67,8 @@ public class StubAppTests
     var result = sut.GetFilePath(httpContext!);
 
     // assert
-    Assert.Equal("\\home\\bourne\\json\\x\\y\\a\\b\\get.json", result);
+    var expected = Path.Combine("home", "bourne", "json", "x", "y", "a", "b", "get.json");
+    Assert.EndsWith(expected, result, StringComparison.InvariantCulture);
   }
 
   [Fact]
