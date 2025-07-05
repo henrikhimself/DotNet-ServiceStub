@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
@@ -46,10 +47,8 @@ public class StubAppTests
     Assert.Equal("x/y/a/b/get", result);
   }
 
-  [Theory]
-  [InlineData("/home/bourne/json/")]
-  [InlineData("c:\\home\\bourne\\json\\")]
-  public void GetFilePath_GivenHttpContext_Returns(string jsonPath)
+  [Fact]
+  public void GetFilePath_GivenHttpContext_Returns()
   {
     // arrange
     DefaultHttpContext? httpContext = null;
@@ -58,6 +57,9 @@ public class StubAppTests
     {
       SetHappyPath(arrange);
       httpContext = arrange.Instance<DefaultHttpContext>();
+
+      var rootDirectory = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "c:" : "/";
+      var jsonPath = Path.Combine(rootDirectory, "home", "bourne", "json");
       arrange.Instance<StubOptions>().JsonPath = jsonPath;
     });
 

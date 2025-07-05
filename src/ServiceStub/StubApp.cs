@@ -50,8 +50,10 @@ internal sealed class StubApp(IOptions<StubOptions> appOptions)
 
   public string GetFilePath(HttpContext context)
   {
-    var jsonDirectory = Path.GetDirectoryName(appOptions.Value.JsonPath) ?? AppContext.BaseDirectory;
-    return Path.Combine([jsonDirectory, .. GetRouteSegments(context)]) + ".json";
+    var jsonDirectory = appOptions.Value.JsonPath ?? AppContext.BaseDirectory;
+    var jsonSegments = jsonDirectory.Split(Path.DirectorySeparatorChar, StringSplitOptions.RemoveEmptyEntries);
+    var routeSegments = GetRouteSegments(context);
+    return Path.Combine([.. jsonSegments, .. routeSegments]) + ".json";
   }
 
   public Func<HttpContext, CancellationToken, Task>? GetApiFunc(HttpContext context)
