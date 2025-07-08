@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/henrikhimself/DotNet-ServiceStub</PackageProjectUrl>
     <RepositoryUrl>https://github.com/henrikhimself/DotNet-ServiceStub.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.0-beta1</Version>
+    <Version>1.0.0-beta2</Version>
   </PropertyGroup>
 
 </Project>

@@ -1,0 +1,21 @@
+###
+# Show the name of the active collection.
+GET https://localhost:7144/stub/collection/
+
+###
+# Change the active collection to be "my-other-collection".
+POST https://localhost:7144/stub/collection/
+Content-Type: application/json
+
+{
+  "name": "my-other-collection"
+}
+
+###
+# Change the active collection back to be "_default".
+POST https://localhost:7144/stub/collection/
+Content-Type: application/json
+
+{
+  "name": "_default"
+}
