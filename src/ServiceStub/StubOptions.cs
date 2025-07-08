@@ -16,7 +16,7 @@
 
 namespace Hj.ServiceStub;
 
-internal sealed class StubOptions
+public sealed class StubOptions
 {
   public string? JsonPath { get; set; }
 }
